@@ -1,0 +1,239 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Food Delivery System | Restaurant</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+	<meta name="viewport" content="width=device-width" />
+
+
+	<!-- Bootstrap core CSS     -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+	<!-- Animation library for notifications   -->
+	<link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+	<!--  Light Bootstrap Table core CSS    -->
+	<link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+	<!--  CSS for Demo Purpose, don't include it in your project     -->
+	<link href="assets/css/demo.css" rel="stylesheet" />
+	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-functions.js"></script>
+
+
+	<!--     Fonts and icons     -->
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+	<link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style>
+	.form-group.required .control-label:after {
+		content:"*";
+		color: red;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+
+		<div class="sidebar" data-color="purple" data-image="./assets/img/sidebar-5.jpg">
+			<div class="sidebar-wrapper">
+				<div class="logo">
+                    <a href="#" class="simple-text">
+                        Food Delivery System
+                    </a>
+				</div>
+
+                <ul class="nav">
+                    <li>
+                        <a href="#">
+                            <i class="pe-7s-graph"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="add_items.html">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Add New Items</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="book_list.html">
+                            <i class="pe-7s-notebook"></i>
+                            <p>Delete Items</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="issuse_book.html">
+                            <i class="pe-7s-note2"></i>
+                            <p>Update Items</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="return_book.html">
+                            <i class="pe-7s-notebook"></i>
+                            <p>List Items </p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="order_list.html">
+                            <i class="pe-7s-notebook"></i>
+                            <p>Order List </p>
+                        </a>
+                    </li>
+                    <li class="active-pro">
+                        <a href="#">
+                            <i class="pe-7s-rocket"></i>
+                            <p>ROY@L D&#8377;eams</p>
+                        </a>
+                    </li>
+                </ul>
+			</div>
+		</div>
+
+		<div class="main-panel">
+			<nav class="navbar navbar-default navbar-fixed">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">User</a>
+					</div>
+				</div>
+			</nav>
+
+			<div class="content">
+				<div class="container-fluid">
+					<div class="rows container" style="width:700px;">
+						<div style="border-color: rgba(255,255,255,0.1);border-style:solid; border-width:1px; border-radius:15px;padding:20px;margin:20px;">
+							<div class="form-group required">
+								<label class="control-label" for="input1">Book Name: </label>
+								<input type="text" class="form-control book-name not-null" id="input1" placeholder="Enter Book Name" required>
+							</div>
+							<div class="form-group required">
+								<label class="control-label" for="input2">Author: </label>
+								<input type="text" class="form-control book-author not-null" id="input2" placeholder="Enter Author Name" required>
+							</div>
+							<div class="form-group required">
+								<label class="control-label" for="input3">Publication : </label>
+								<input type="text" class="form-control book-publication not-null" id="input3" placeholder="Enter Publication" required>
+							</div>
+							<div class="form-group required">
+								<label class="control-label" for="input4">Category : </label>
+								<input type="text" class="form-control book-category not-null" id="input4" placeholder="Enter Book Category" required>
+							</div>
+							<div class="form-group required">
+								<label class="control-label" for="input5">Book Description: </label>
+								<textarea rows="5" class="form-control book-description not-null" id="input5" placeholder="maximum 300 words" required></textarea>
+							</div>
+							<div class="form-group required">
+								<label class="control-label" for="input6">Book Image Url: </label>
+								<input type="text" class="form-control book-url not-null" id="input6" placeholder="Enter Image URL" required>
+							</div>
+							<div class="form-group required">
+								<label class="control-label" for="input7">Book Stock: </label>
+								<input type="number" class="form-control book-stock not-null number" id="input7" placeholder="Enter Book stock" required>
+							</div>
+							<div class="required text-center" >
+								<input type="button" style="margin-top:10px;margin-bottom:10px;width:70%;" class="submit-btn btn btn-primary form-control" value="Add Book" required>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script>
+	var database;
+	var users;
+	function configure() {
+		var config = {
+			apiKey: "AIzaSyD5TkoPbfWFuE-9tcCacfH-ziKYXQ_7eN0",
+			authDomain: "librarymanagment-59aaf.firebaseapp.com",
+			databaseURL: "https://librarymanagment-59aaf.firebaseio.com",
+			projectId: "librarymanagment-59aaf",
+			storageBucket: "librarymanagment-59aaf.appspot.com",
+			messagingSenderId: "1079584735039"
+		};
+		firebase.initializeApp(config);
+	}
+	function init(){
+		configure();
+		database = firebase.database();
+		//console.log(database);
+		users = database.ref('Student');
+		//console.log(users);
+		// console.log(firebase.app().name);
+	}
+	$(document).ready(function(){
+		init();
+	});
+
+	$('.submit-btn').on('click', function(){
+		var confirmation = confirm("Please check your data before registration!\nAre you sure?");
+		if(!confirmation) {
+			return false;
+		}
+		var status = true;
+
+		$('.not-null').each(function() {
+			if($(this).val() == "" || $(this).val() == " ") {
+				status = false;
+				alert('Please enter all required data!');
+				return false;
+			}
+		});
+
+		if(status == false) {
+			return false;
+		}
+		if(status == true)
+		{
+			var book_name=$('.book-name').val().trim();
+			var book_author=$('.book-author').val().trim();
+			var book_publication=$('.book-publication').val().trim();
+			var book_category=$('.book-category').val().trim();
+			var book_description=$('.book-description').val().trim();
+			var book_stock=$('.book-stock').val().trim();
+			var book_url=$('.book-url').val().trim();
+			// console.log(book_name+"\n"+book_author+"\n"+book_description+"\n"+book_publication+"\n"+book_stock+"\n"+book_url+"\n");
+
+			// console.log((new Date).getTime());
+			var timestamp=(new Date().getTime());
+			var id=parseInt(timestamp).toString();
+
+			firebase.database().ref('Books/store/' + id).set({
+				'book_id': id,
+				'book_name': book_name,
+				'author' : book_author,
+				'publication':book_publication,
+				'category':book_category,
+				'description':book_description,
+				'image_url':book_url,
+				'stock':book_stock
+			});
+			alert("successfull book add");
+			window.location.href ="./book_list.html";
+		}
+	});
+	</script>
+
+</body>
+<script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+<script src="assets/js/demo.js"></script>
+</html>
