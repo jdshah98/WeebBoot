@@ -50,7 +50,7 @@ if(mysqli_num_rows($result)>0){
     $_SESSION['uEmail']=$row[2];
     $_SESSION['uType']=$row[1];
     $ip=get_client_ip();
-    setcookie("FoodDelivery[$id]",$row[0]."__".$row[1]."__".$row[2]."__".$row[3],time()+3600*24*60);
+    setcookie("FoodDelivery[$id]",$row[2]."__".$row[3],time()+3600*24*60);
     $stmt2 = $conn->prepare("INSERT INTO session values(?,?,?,?,?,?)");
     $stmt2->bind_param("sissss",$_SESSION['sid'],$_SESSION['uid'],$_SESSION['uEmail'],$_SESSION['uType'],time(),$ip);
     $stmt2->execute();

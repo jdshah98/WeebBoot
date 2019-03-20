@@ -7,11 +7,16 @@ session_start();
             $count = $name;
             // echo $value."\n";
         }
-        echo $count;
+        // echo $count;
         $value = $_COOKIE["FoodDelivery"][$count];
-        // echo $value;
         $value2 = explode("__",$value);
         print_r($value2);
+        if(!isset($_SESSION["sid"])){
+            $_SESSION['sid']=session_id();
+            $_SESSION['email']=$value2[0];
+            // $_SESSION[]
+        }
+
     }
 
 ?>
