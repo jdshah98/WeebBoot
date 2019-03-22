@@ -18,7 +18,7 @@ $(document).ready(function () {
         
             var foods=JSON.parse(params);
             foods.forEach(element => {
-                var food_items='<div class="col-md-4 item-div-'+element['fid']+'"><div class="card shadow-lg p-0 mb-4 bg-light"><img class="card-img-top" src="./img/'+element['url']+'"><div class="card-body"><p>'+element['name']+'</p><p>'+element['cost']+'</p><a href="#" onclick="itemClick(this)" class="btn btn-outline-secondary '+element['fid']+'">Add to Cart</a></div></div></div>"'; 
+                var food_items='<div class="col-md-4 item-div-'+element['fid']+'"><div class="card shadow-lg p-0 mb-4 bg-light"><img class="card-img-top" src="./img/'+element['url']+'"><div class="card-body"><p>'+element['name']+'</p><p>'+element['cost']+'</p><a href="#" onclick="itemClick(this)" class="btn btn-outline-secondary '+element['fid']+'">Add to Cart</a></div></div></div>'; 
                    $('.foods-menu').append(food_items);
             });
 
@@ -30,9 +30,3 @@ $(document).ready(function () {
         }
     });
 });
-function itemClick(e)
-{
-    var classes=e.className.split(" ");
-    console.log($('.item-div-'+classes[2]));
-    console.log(classes[2]);
-}
