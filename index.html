@@ -9,10 +9,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<link href="css/style.css" rel="stylesheet">
-	<script type="text/javascript" src="./js/script.js"></script>
-
+	<script type="text/javascript" src="js/script.js"></script>
 	<link rel="shortcut icon" type="image/png" href="./img/favicon.png">
 </head>
 
@@ -38,31 +38,29 @@
 						<a class="nav-link" href="index.html">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Menu</a>
+						<a class="nav-link" href="menu.html">Menu</a>
 					</li>
-
-
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-toggle="dropdown">Menu</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-						</div>
-					</li>
-
-
 
 					<li class="nav-item">
 						<a class="nav-link" href="#">About</a>
 					</li>
 
-
-					<div class="input-group-btn">
-						<button class="btn btn-success"
+					<div class="input-group-btn btn-group">
+						<button class="btn btn-outline-success"
 							onclick="document.getElementById('id01').style.display='block',document.getElementById('id02').style.display='none'"
 							type="submit">Login</button>
+						<button class="btn btn-outline-primary"
+							onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
+							type="submit">Sign UP</button>
 					</div>
+
+					<div class="input-group-btn">
+						<button class="btn btn-light"
+							onclick="document.getElementById('id03').style.display='block',document.getElementById('id02').style.display='none'"
+							type="submit">Cart</button>
+
+					</div>
+
 				</ul>
 			</div>
 		</div>
@@ -150,7 +148,6 @@
 
 	<div class="container-fluid">
 		<div class="row padding foods-menu">
-			
 		</div>
 	</div>
 
@@ -159,29 +156,33 @@
 	<div id="id01" class="modal">
 		<div class="modal-content">
 			<div class="container">
+				<i class="fa fa-window-close" aria-hidden="true"
+					onclick="document.getElementById('id01').style.display='none'"></i>
+
 				<h1>Login</h1>
+
 				<p>Please Enter detail to Login.</p>
 				<hr>
 
 				<label for="loginemail"><b>Email</b></label>
-				<input type="text" placeholder="abc@gmail.com" name="loginemail" id="loginemail" required>
+				<input type="text" placeholder="abc@gmail.com" name="loginemail" required id="loginemail">
 
 				<label for="loginpw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="loginpw" id="loginpassword" required>
+				<input type="password" placeholder="Enter Password" name="loginpw" required id="loginpassword">
 
 				<label for="newuser">New User ?</label>
-				<button class="btn btn-light"
+				<button class="btn btn-link"
 					onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
 					type="submit">Create new Account</button>
 
 				<div class="clearfix">
 					<div class="row">
 						<div class="col-sm-6">
-							<button type="submit" class="signupbtn btn btn-success" id="login-submit">Login</button>
+							<button type="submit" id="login-submit" class="signupbtn btn btn-success">Login</button>
 						</div>
 						<div class="col-sm-6">
-							<button type="button" onclick="document.getElementById('id01').style.display='none'"
-								class="cancelbtn btn btn-danger">Cancel</button>
+							<button type="reset" class="cancelbtn btn btn-danger">Reset</button>
+
 						</div>
 					</div>
 				</div>
@@ -191,54 +192,118 @@
 
 	<script>
 		// Get the modal
-		var modal = document.getElementById('id01');
-		var modal2 = document.getElementById('id02');
+		/*	var modal = document.getElementById('id01');
+			var modal2 = document.getElementById('id02');
 
-		window.onclick = function (event) {
-			if (event.target == modal || event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
+			window.onclick = function(event) {
+				if (event.target == modal || event.target == modal2) {
+					modal.style.display = "none";
+				}
+			}*/
 	</script>
 
 	<!--Register-->
 	<div id="id02" class="modal">
 		<div class="modal-content">
 			<div class="container">
+				<i class="fa fa-window-close" aria-hidden="true"
+					onclick="document.getElementById('id02').style.display='none'"></i>
 				<h1>Sign Up</h1>
 				<p>Please fill in this form to create an account.</p>
 				<hr>
 				<label for="name"><b>Name</b></label>
-				<input type="text" placeholder="Enter Name" name="name" id="name">
+				<input type="text" placeholder="Enter Name" name="name" required id="name">
 
 				<label for="email"><b>Email</b></label>
-				<input type="text" placeholder="abc@gmail.com" id="email" name="email">
+				<input type="text" placeholder="abc@gmail.com" name="email" required id="email">
 
 				<label for="mobile"><b>Mobile no</b></label>
-				<input type="text" onchange="checkMobile();" placeholder="1234567890" id="mobile" name="mobile">
+				<input type="text" onchange="checkMobile();" placeholder="1234567890" id="mobile" name="mobile"
+					required>
 
 				<label for="pw"><b>Password</b></label>
-				<input type="password" onchange="checkPasswordMatch();" placeholder="Enter Password" id="pw" name="pw">
+				<input type="password" onchange="checkPasswordMatch();" placeholder="Enter Password" id="pw" name="pw"
+					required>
 
 				<label for="cpw"><b>Confirm Password</b></label>
 				<input type="password" onchange="checkPasswordMatch();" placeholder="Confirm Password" id="cpw"
-					name="cpw">
+					name="cpw" required>
 
 				<span id='message'></span>
 				<div class="clearfix">
 					<div class="row">
 						<div class="col-sm-6">
-							<button type="submit" class="signupbtn btn btn-success" id="submit">Sign Up</button>
+							<button type="submit" id="submit" class="signupbtn btn btn-success">Sign Up</button>
 						</div>
 						<div class="col-sm-6">
-							<button type="button" onclick="document.getElementById('id02').style.display='none'"
-								class="cancelbtn btn btn-danger">Cancel</button>
+							<button type="reset" class="cancelbtn btn btn-danger">Reset</button>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<!--Add To cart-->
+	<div id="id03" class="modal">
+		<div class="modal-content">
+			<div class="container">
+				<i class="fa fa-window-close" aria-hidden="true"
+					onclick="document.getElementById('id03').style.display='none'"></i>
+			</div>
+
+			<table id="cart" class="table table-hover table-condensed">
+				<thead>
+					<tr>
+						<th style="width:60%">Product</th>
+						<th style="width:10%">Price</th>
+						<th style="width:8%">Quantity</th>
+						<th style="width:22%" class="text-center">Subtotal</th>
+						<th style="width:10%"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-th="Product">
+							<div class="row">
+								<div class="col-sm-2 col-md-6 hidden-xs"><img src="./img/food1.jpg" width="100px"
+										height="100px" alt="Cart Image" class="img-responsive" /></div>
+								<div class="col-sm-10 col-md-6">
+									<h4 class="nomargin">Product 1</h4>
+									<p>Discription of Product 1</p>
+								</div>
+							</div>
+						</td>
+						<td data-th="Price">$1.99</td>
+						<td data-th="Quantity">
+							<input type="number" class="form-control text-center" value="1">
+						</td>
+						<td data-th="Subtotal" class="text-center">1.99</td>
+						<td class="" data-th="">
+							<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+							<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+						</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr class="visible-xs">
+						<td class="text-center"><strong>Total 1.99</strong></td>
+					</tr>
+					<tr>
+						<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+						</td>
+						<td colspan="2" class="hidden-xs"></td>
+						<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+						<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+	</div>
+	<!--Floating Button-->
 
 
 	<footer>
@@ -248,10 +313,18 @@
 			</div>
 		</div>
 	</footer>
+<<<<<<< HEAD
 	<script src="./js/register.js"></script>
 	<script src="./js/login.js"></script>
 	<script src="./js/load.js"></script>
 	<script src="./js/cart.js"></script>
+=======
+
+>>>>>>> 6b87498dc3ca4b00dbdc8c6a5193920f4bba848b
 </body>
+<script src="./js/load.js"></script>
+<script src="./js/login.js"></script>
+<script src="./js/register.js"></script>
+<script src="./js/script.js"></script>
 
 </html>
