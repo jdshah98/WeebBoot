@@ -14,7 +14,7 @@ $(document).ready(function () {
     $.ajax({
         url:'./php/foodmenu.php',
         success:function(params) {
-        console.log(params);
+        // console.log(params);
         
             var foods=JSON.parse(params);
             foods.forEach(element => {

@@ -61,6 +61,7 @@
 
 					</div>
 
+					<li class="nav-item"><div class="person-name"></div></li>
 				</ul>
 			</div>
 		</div>
@@ -246,7 +247,7 @@
 	</div>
 
 	<!--Add To cart-->
-	<div id="id03" class="modal">
+	<div id="id03" class="modal" class="add-to-cart-block">
 		<div class="modal-content">
 			<div class="container">
 				<i class="fa fa-window-close" aria-hidden="true"
@@ -267,17 +268,17 @@
 					<tr>
 						<td data-th="Product">
 							<div class="row">
-								<div class="col-sm-2 col-md-6 hidden-xs"><img src="./img/food1.jpg" width="100px"
+								<div class="col-sm-2 col-md-6 hidden-xs cart-item-img"><img src="./img/food1.jpg" width="100px"
 										height="100px" alt="Cart Image" class="img-responsive" /></div>
 								<div class="col-sm-10 col-md-6">
-									<h4 class="nomargin">Product 1</h4>
-									<p>Discription of Product 1</p>
+									<h4 class="cart-item-name nomargin">Product 1</h4>
+									<p class="cart-item-discription">Discription of Product 1</p>
 								</div>
 							</div>
 						</td>
-						<td data-th="Price">$1.99</td>
+						<td data-th="Price " class="cart-item-price">$1.99</td>
 						<td data-th="Quantity">
-							<input type="number" class="form-control text-center" value="1">
+							<input type="number" class="form-control text-center cart-noof-item" value="1">
 						</td>
 						<td data-th="Subtotal" class="text-center">1.99</td>
 						<td class="" data-th="">
@@ -285,22 +286,23 @@
 							<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
 						</td>
 					</tr>
+					
 				</tbody>
 				<tfoot>
+					<tr><div class="cart-item-logininvalid"></div></tr>
 					<tr class="visible-xs">
-						<td class="text-center"><strong>Total 1.99</strong></td>
+						<!-- <td class="text-center"><strong>Total 1.99</strong></td> -->
 					</tr>
 					<tr>
 						<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
 						</td>
 						<td colspan="2" class="hidden-xs"></td>
-						<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
-						<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+						<td class="hidden-xs text-center"><strong>Total <div class="cart-item-total">$1.99</div></strong></td>
+						<td><a href="#" class="btn btn-success btn-block" onclick="cartItemCheckoutClick(this)">Checkout <i class="fa fa-angle-right"></i></a>
 						</td>
 					</tr>
 				</tfoot>
 			</table>
-
 		</div>
 	</div>
 	<!--Floating Button-->
@@ -313,18 +315,10 @@
 			</div>
 		</div>
 	</footer>
-<<<<<<< HEAD
+
 	<script src="./js/register.js"></script>
 	<script src="./js/login.js"></script>
 	<script src="./js/load.js"></script>
 	<script src="./js/cart.js"></script>
-=======
-
->>>>>>> 6b87498dc3ca4b00dbdc8c6a5193920f4bba848b
-</body>
-<script src="./js/load.js"></script>
-<script src="./js/login.js"></script>
-<script src="./js/register.js"></script>
-<script src="./js/script.js"></script>
 
 </html>
