@@ -1,5 +1,6 @@
 <?php
 require 'connection.php';
+include 'fileupload.php';
 session_start();
 if(!isset($_SESSION['sid'])){
        $_SESSION['sid']=session_id();
@@ -22,11 +23,11 @@ function get_client_ip() {
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-$name = $_GET["name"];
-$category=$_GET["category"];
-$description=$_GET["description"];
-$price=$_GET["price"];
-$url=$_GET["url"];
+$name = $_POST["name"];
+$category=$_POST["category"];
+$description=$_POST["description"];
+$price=$_POST["price"];
+$url=$_FILES['url']['name'];
 
 $sql = "select * from food where name like '$name'";
 $result = mysqli_query($conn,$sql);
@@ -35,11 +36,13 @@ if(mysqli_num_rows($result)>0){
     echo "Item already Exists";
 }
 else {
-	$cookie_name="userid";
-	$rid=	(int)$_COOKIE[$cookie_name];
+	$rid=$_SESSION['uid'];
+	//$rid=	(int)$_COOKIE[$cookie_name];
 	 $stmt = $conn->prepare("INSERT INTO food(rid,name,category,ingredients,cost,url) VALUES (?,?,?,?,?,?)");
     $stmt->bind_param("isssis",$rid,$name,$category,$description,$price,$url);
     $stmt->execute();
+	echo $rid;
+	upload($rid,$name);
 	echo "Item Added";
 }
 

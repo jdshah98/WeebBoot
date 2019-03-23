@@ -1,5 +1,6 @@
 <?php
 require 'connection.php';
+include 'fileupload.php';
 session_start();
 if(!isset($_SESSION['sid'])){
        $_SESSION['sid']=session_id();
@@ -22,11 +23,11 @@ function get_client_ip() {
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-$name = $_GET["name"];
-$category=$_GET["category"];
-$description=$_GET["description"];
-$price=$_GET["price"];
-$url=$_GET["url"];
+$name = $_POST["name"];
+$category=$_POST["category"];
+$description=$_POST["description"];
+$price=$_POST["price"];
+$url=$_FILES['url']['name'];
 
 
 $sql = "select * from food where name like '$name'";
@@ -38,6 +39,7 @@ if(mysqli_num_rows($result)>0){
 	$stmt = $conn->prepare("UPDATE food SET name=?,ingredients=?,category=?,cost=?,url=? WHERE fid=?");
     $stmt->bind_param("sssisi",$name,$description,$category,$price,$url,$id);
     $stmt->execute();
+	upload($row[0],$name);
 	echo "Item Added";
 }
 else {
