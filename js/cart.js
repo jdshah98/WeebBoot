@@ -42,7 +42,7 @@ function cartItemCheckoutClick(e) {
                     type: 'get',
                     success: function (params) {
                         console.log(params);
-                        // showLocation();
+                        window.location.href = "cart.html";
                     },
                     error: function (params) {
                         alert(params)
