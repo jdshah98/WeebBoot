@@ -14,10 +14,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<link href="css/style.css" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="css/style2.scss"/>  
+	<!-- <link rel="stylesheet" type="text/css" href="css/style2.scss"/>   -->
 
 	<script type="text/javascript" src="js/script.js"></script>
-	
+
 	<link rel="shortcut icon" type="image/png" href="./img/favicon.png">
 </head>
 
@@ -27,8 +27,8 @@
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="index.html">Food Delivery System</a>
-			<button id="toggle" class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" style="
+			<button id="toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+				style="
     padding-left: 0px;
     padding-right: 0px;
     border-left-width: 0px;
@@ -51,15 +51,15 @@
 					</li>
 
 					<li>
-					<div class="input-group-btn btn-group">
-						<button class="btn btn-outline-success"
-							onclick="document.getElementById('id01').style.display='block',document.getElementById('id02').style.display='none'"
-							type="submit">Login</button>
-						<button class="btn btn-outline-primary"
-							onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
-							type="submit">Sign UP</button>
-					</div>
-				</li>
+						<div class="input-group-btn btn-group">
+							<button class="btn btn-outline-success"
+								onclick="document.getElementById('id01').style.display='block',document.getElementById('id02').style.display='none'"
+								type="submit">Login</button>
+							<button class="btn btn-outline-primary"
+								onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
+								type="submit">Sign UP</button>
+						</div>
+					</li>
 					<!--<div class="input-group-btn">
 						<button class="btn btn-light"
 							onclick="document.getElementById('id03').style.display='block',document.getElementById('id02').style.display='none'"
@@ -68,10 +68,11 @@
 					</div>-->
 
 					<li class="nav-item">
-						<a  href="cart.html" ><button class="btn btn-success"><i class="fa fa-cart-arrow-down" style="color:white"></i></button>
+						<a href="cart.html"><button class="btn btn-success"><i class="fa fa-cart-arrow-down"
+									style="color:white"></i></button>
 						</a>
 					</li>
-					
+
 					<!-- <li class="nav-item"><div class="person-name"></div></li> -->
 				</ul>
 			</div>
@@ -148,16 +149,14 @@
 				<input type="text" placeholder="abc@gmail.com" name="email" required id="email">
 
 				<label for="mobile"><b>Mobile no</b></label>
-				<input type="text" onchange="checkMobile();" placeholder="1234567890" id="mobile" name="mobile"
-					required>
+				<input type="text" onchange="checkMobile();" placeholder="1234567890" id="mobile" name="mobile" required>
 
 				<label for="pw"><b>Password</b></label>
-				<input type="password" onchange="checkPasswordMatch();" placeholder="Enter Password" id="pw" name="pw"
-					required>
+				<input type="password" onchange="checkPasswordMatch();" placeholder="Enter Password" id="pw" name="pw" required>
 
 				<label for="cpw"><b>Confirm Password</b></label>
-				<input type="password" onchange="checkPasswordMatch();" placeholder="Confirm Password" id="cpw"
-					name="cpw" required>
+				<input type="password" onchange="checkPasswordMatch();" placeholder="Confirm Password" id="cpw" name="cpw"
+					required>
 
 				<span id='message'></span>
 				<div class="clearfix">
@@ -175,102 +174,55 @@
 		</div>
 	</div>
 
-	
+
 
 
 	<!--Specific code for Cart-->
 
-<div class="shopping-cart container">
+	<div class="shopping-cart container">
 
-  <div class="column-labels">
-    <label class="product-image">Image</label>
-    <label class="product-details">Product</label>
-    <label class="product-price">Price</label>
-    <label class="product-quantity">Quantity</label>
-    <label class="product-removal">Remove</label>
-    <label class="product-line-price">Total</label>
-  </div>
-
-  <div class="product">
-    <div class="product-image">
-      <img src="./img/food1.jpg" width="100px" height="100px" alt="Cart Image">
-    </div>
-    <div class="product-details">
-      <div class="product-title">product-title</div>
-      <p class="product-description">Product Discription</p>
-    </div>
-    <div class="product-price">12.99</div>
-    <div class="product-quantity">
-      <input type="number" value="2" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">25.98</div>
-  </div>
-
-  
-  <div class="product">
-		<div class="product-image">
-		  <img src="./img/food2.jpg" width="100px" height="100px" alt="Cart Image">
+		<div class="column-labels">
+			<label class="product-image">Image</label>
+			<label class="product-details">Product</label>
+			<label class="product-price">Price</label>
+			<label class="product-quantity">Quantity</label>
+			<label class="product-removal">Remove</label>
+			<label class="product-line-price">Total</label>
 		</div>
-		<div class="product-details">
-		  <div class="product-title">product-title</div>
-		  <p class="product-description">Product Discription</p>
+		<div class="products">
+			
 		</div>
-		<div class="product-price">12.99</div>
-		<div class="product-quantity">
-		  <input type="number" value="2" min="1">
+		<div class="totals">
+			<div class="totals-item">
+				<label>Subtotal</label>
+				<div class="totals-value" id="cart-subtotal">71.97</div>
+			</div>
+			<div class="totals-item">
+				<label>Tax (5%)</label>
+				<div class="totals-value" id="cart-tax">3.60</div>
+			</div>
+			<div class="totals-item">
+				<label>Shipping</label>
+				<div class="totals-value" id="cart-shipping">15.00</div>
+			</div>
+			<div class="totals-item totals-item-total">
+				<label>Grand Total</label>
+				<div class="totals-value" id="cart-total">90.57</div>
+			</div>
 		</div>
-		<div class="product-removal">
-		  <button class="remove-product">
-			Remove
-		  </button>
-		</div>
-		<div class="product-line-price">25.98</div>
-	  </div>
-	
-	
 
-  <div class="totals">
-    <div class="totals-item">
-      <label>Subtotal</label>
-      <div class="totals-value" id="cart-subtotal">71.97</div>
-    </div>
-    <div class="totals-item">
-      <label>Tax (5%)</label>
-      <div class="totals-value" id="cart-tax">3.60</div>
-    </div>
-    <div class="totals-item">
-      <label>Shipping</label>
-      <div class="totals-value" id="cart-shipping">15.00</div>
-    </div>
-    <div class="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div class="totals-value" id="cart-total">90.57</div>
-    </div>
-  </div>
-      
-      <button class="checkout">Checkout</button>
+		<button class="checkout">Checkout</button>
 
-</div>
-
-
-	<!-- <footer>
+	</div>
+	<footer>
 		<div class="container-fluid padding">
 			<div class="col-12">
 				<p class="text-center">Fast Food Delivery ,Copyright &copy; 2019</p>
 			</div>
 		</div>
-	</footer> -->
-
-	<script src="./js/register.js"></script>
-	<script src="./js/login.js"></script>
-	<script src="./js/load.js"></script>
-	<script src="./js/cart.js"></script>
-	<script src="./js/cartpage.js"></script>
+	</footer>
+</body>
+<script src="./js/cartpage.js"></script>
 
 
 </html>
