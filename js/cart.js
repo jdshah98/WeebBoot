@@ -41,8 +41,8 @@ function cartItemCheckoutClick(e) {
                     },
                     type: 'get',
                     success: function (params) {
-                        console.log("uid : "+params);
-                        showLocation();
+                        console.log(params);
+                        // showLocation();
                     },
                     error: function (params) {
                         alert(params)
