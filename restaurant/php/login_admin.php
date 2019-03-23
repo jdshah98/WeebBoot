@@ -35,12 +35,20 @@ if(mysqli_num_rows($result) > 0)
 		$_SESSION['uid']=$id;
 		$_SESSION['uEmail']=$row[2];
 		$_SESSION['uType']=$row[1];
+		$stmt = ("select * from restaurant where uid like '$id'");
+		$result = mysqli_query($conn, $stmt);
+		$row = mysqli_fetch_row($result);
+		$id = $row[0];
+		$_SESSION['uid']=$id;
 		$ip=get_client_ip();
 		$stmt2 = $conn->prepare("INSERT INTO session values(?,?,?,?,?,?)");
 		$stmt2->bind_param("sissss",$_SESSION['sid'],$_SESSION['uid'],$_SESSION['uEmail'],$_SESSION['uType'],time(),$ip);
 		$stmt2->execute();
 		setcookie("FoodDelivery[$id]",$row[2]."__".$row[3],time()+3600*24*60);
+		//setcookie("userid",$id,time()+3600*24*60, "/");
     	echo "login success";
+		
+		
 	}else{
 		echo "username or password is invalid";
 	}
