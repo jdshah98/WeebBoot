@@ -42,7 +42,7 @@ function cartItemCheckoutClick(e) {
                     type: 'get',
                     success: function (params) {
                         console.log("uid : "+params);
-
+                        showLocation();
                     },
                     error: function (params) {
                         alert(params)
@@ -57,10 +57,11 @@ function cartItemCheckoutClick(e) {
             alert(params);
         }
     });
-    
-
-
 }
 $(document).ready(function () {
     // $('.cart-item-logininvalid').html('');
 });
+function showLocation()
+{
+    console.log(geolocation.latitude);
+}

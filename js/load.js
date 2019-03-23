@@ -29,4 +29,36 @@ $(document).ready(function () {
             
         }
     });
+    geoLocationPermisiion();
 });
+
+function geoLocationPermisiion()
+{
+    function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+        alert("Geolocation is not supported by this browser.");
+        }
+      }
+      
+      function showPosition(position) {
+          lan=position.coords.latitude;
+          long=position.coords.longitude;
+            geolocation=new GeoLocation(lan,long);
+          console.log("latitude: "+position.coords.latitude);
+          console.log("longitude : "+position.coords.longitude);
+      }
+      getLocation();
+      showPosition();
+}
+class GeoLocation{
+    latitude=0;
+    longitude=0;
+    constructor(latitude,longitude)
+    {
+        this.latitude=latitude;
+        this.longitude=longitude;
+    }
+}
+geolocation=new GeoLocation(0,0);
