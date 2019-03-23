@@ -9,7 +9,7 @@ $('#login-submit').on('click', function () {
             "pass": pass
         },
         success: function (data) {
-            $('.person-name').html(data);
+            // $('.person-name').html(data);
             console.log(data);
         },
         error: function (data) {
