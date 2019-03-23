@@ -1,24 +1,276 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="./img/favicon.png">
-    <style></style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Food Delivery System | Cart</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<link href="css/style.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/style2.scss"/>  
+
+	<script type="text/javascript" src="js/script.js"></script>
+	
+	<link rel="shortcut icon" type="image/png" href="./img/favicon.png">
 </head>
 
 <body>
-    
-</body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="index.html">Food Delivery System</a>
+			<button id="toggle" class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" style="
+    padding-left: 0px;
+    padding-right: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="index.html">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="menu.html">Menu</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+
+					<li>
+					<div class="input-group-btn btn-group">
+						<button class="btn btn-outline-success"
+							onclick="document.getElementById('id01').style.display='block',document.getElementById('id02').style.display='none'"
+							type="submit">Login</button>
+						<button class="btn btn-outline-primary"
+							onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
+							type="submit">Sign UP</button>
+					</div>
+				</li>
+					<!--<div class="input-group-btn">
+						<button class="btn btn-light"
+							onclick="document.getElementById('id03').style.display='block',document.getElementById('id02').style.display='none'"
+							type="submit">Cart</button>
+
+					</div>-->
+
+					<li class="nav-item">
+						<a  href="cart.html" ><button class="btn btn-success"><i class="fa fa-cart-arrow-down" style="color:white"></i></button>
+						</a>
+					</li>
+					
+					<!-- <li class="nav-item"><div class="person-name"></div></li> -->
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!--- Image Slide-->
+
+
+	<!-- Login Form-->
+
+	<div id="id01" class="modal">
+		<div class="modal-content">
+			<div class="container">
+				<i class="fa fa-window-close" aria-hidden="true"
+					onclick="document.getElementById('id01').style.display='none'"></i>
+
+				<h1>Login</h1>
+
+				<p>Please Enter detail to Login.</p>
+				<hr>
+
+				<label for="loginemail"><b>Email</b></label>
+				<input type="text" placeholder="abc@gmail.com" name="loginemail" required id="loginemail">
+
+				<label for="loginpw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="loginpw" required id="loginpassword">
+
+				<label for="newuser">New User ?</label>
+				<button class="btn btn-link"
+					onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
+					type="submit">Create new Account</button>
+
+				<div class="clearfix">
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="submit" id="login-submit" class="signupbtn btn btn-success">Login</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="reset" class="cancelbtn btn btn-danger">Reset</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// Get the modal
+		/*	var modal = document.getElementById('id01');
+			var modal2 = document.getElementById('id02');
+
+			window.onclick = function(event) {
+				if (event.target == modal || event.target == modal2) {
+					modal.style.display = "none";
+				}
+			}*/
+	</script>
+
+	<!--Register-->
+	<div id="id02" class="modal">
+		<div class="modal-content">
+			<div class="container">
+				<i class="fa fa-window-close" aria-hidden="true"
+					onclick="document.getElementById('id02').style.display='none'"></i>
+				<h1>Sign Up</h1>
+				<p>Please fill in this form to create an account.</p>
+				<hr>
+				<label for="name"><b>Name</b></label>
+				<input type="text" placeholder="Enter Name" name="name" required id="name">
+
+				<label for="email"><b>Email</b></label>
+				<input type="text" placeholder="abc@gmail.com" name="email" required id="email">
+
+				<label for="mobile"><b>Mobile no</b></label>
+				<input type="text" onchange="checkMobile();" placeholder="1234567890" id="mobile" name="mobile"
+					required>
+
+				<label for="pw"><b>Password</b></label>
+				<input type="password" onchange="checkPasswordMatch();" placeholder="Enter Password" id="pw" name="pw"
+					required>
+
+				<label for="cpw"><b>Confirm Password</b></label>
+				<input type="password" onchange="checkPasswordMatch();" placeholder="Confirm Password" id="cpw"
+					name="cpw" required>
+
+				<span id='message'></span>
+				<div class="clearfix">
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="submit" id="submit" class="signupbtn btn btn-success">Sign Up</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="reset" class="cancelbtn btn btn-danger">Reset</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+	<!--Specific code for Cart-->
+
+<div class="shopping-cart container">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="./img/food1.jpg" width="100px" height="100px" alt="Cart Image">
+    </div>
+    <div class="product-details">
+      <div class="product-title">product-title</div>
+      <p class="product-description">Product Discription</p>
+    </div>
+    <div class="product-price">12.99</div>
+    <div class="product-quantity">
+      <input type="number" value="2" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+    </div>
+    <div class="product-line-price">25.98</div>
+  </div>
+
+  
+  <div class="product">
+		<div class="product-image">
+		  <img src="./img/food2.jpg" width="100px" height="100px" alt="Cart Image">
+		</div>
+		<div class="product-details">
+		  <div class="product-title">product-title</div>
+		  <p class="product-description">Product Discription</p>
+		</div>
+		<div class="product-price">12.99</div>
+		<div class="product-quantity">
+		  <input type="number" value="2" min="1">
+		</div>
+		<div class="product-removal">
+		  <button class="remove-product">
+			Remove
+		  </button>
+		</div>
+		<div class="product-line-price">25.98</div>
+	  </div>
+	
+	
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Subtotal</label>
+      <div class="totals-value" id="cart-subtotal">71.97</div>
+    </div>
+    <div class="totals-item">
+      <label>Tax (5%)</label>
+      <div class="totals-value" id="cart-tax">3.60</div>
+    </div>
+    <div class="totals-item">
+      <label>Shipping</label>
+      <div class="totals-value" id="cart-shipping">15.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Grand Total</label>
+      <div class="totals-value" id="cart-total">90.57</div>
+    </div>
+  </div>
+      
+      <button class="checkout">Checkout</button>
+
+</div>
+
+
+	<!-- <footer>
+		<div class="container-fluid padding">
+			<div class="col-12">
+				<p class="text-center">Fast Food Delivery ,Copyright &copy; 2019</p>
+			</div>
+		</div>
+	</footer> -->
+
+	<script src="./js/register.js"></script>
+	<script src="./js/login.js"></script>
+	<script src="./js/load.js"></script>
+	<script src="./js/cart.js"></script>
+	<script src="./js/cartpage.js"></script>
+
 
 </html>
