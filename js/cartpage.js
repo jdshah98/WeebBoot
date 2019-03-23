@@ -16,7 +16,17 @@ $(document).ready(function () {
         $('.products').append(cartitem);
         $('#'+element['id']).on('click',function(){
           console.log(this.id);
-          // console.log(i+1);      
+          $.ajax({
+            url:'./php/cartitemremove.php',
+            data:{'cartid':this.id},
+            type:'get',
+            success:function (params) {
+              // console.log(params);
+            },error:function (params) {
+              alert(params);
+            }
+          });
+          // console.log(i+1);
         });
         // console.log('#'+element['id']);
         init();        
