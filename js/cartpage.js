@@ -10,11 +10,19 @@ $(document).ready(function () {
       console.log(items);
       items.forEach(element => {
         // cartitem = '<div class="product"><div class="product-image"><img src="./img/food1.jpg" width="100px" height="100px" alt="Cart Image"></div><div class="product-details"><div class="product-title">product-title</div><p class="product-description">Product Discription</p></div><div class="product-price">12.99</div><div class="product-quantity"><input type="number" value="2" min="1"></div><div class="product-removal"><button class="remove-product">Remove</button></div><div class="product-line-price">25.98</div></div>';
-        cartitem = '<div class="product"><div class="product-image"><img src="./img/'+element['url']+'" width="100px" height="100px" alt="Cart Image"></div><div class="product-details"><div class="product-title">'+element['name']+'</div><p class="product-description">'+element['ingredients']+'</p></div><div class="product-price">'+element['cost']+'</div><div class="product-quantity"><input type="number" value="'+element['qty']+'" min="1"></div><div class="product-removal"><button class="remove-product">Remove</button></div><div class="product-line-price">'+element['qty']*element['cost']+'</div></div>';
+        cartitem = '<div class="product"><div class="product-image"><img src="./img/'+element['url']+'" width="100px" height="100px" alt="Cart Image"></div><div class="product-details"><div class="product-title">'+element['name']+'</div><p class="product-description">'+element['ingredients']+'</p></div><div class="product-price">'+element['cost']+'</div><div class="product-quantity"><input type="number" value="'+element['qty']+'" min="1"></div><div class="product-removal" ><button class="remove-product" id="'+element['id']+'">Remove</button></div><div class="product-line-price">'+element['qty']*element['cost']+'</div></div>';
+        
+        
         $('.products').append(cartitem);
-        init();
+        $('#'+element['id']).on('click',function(){
+          console.log(this.id);
+          // console.log(i+1);      
+        });
+        // console.log('#'+element['id']);
+        init();        
         count++;
       });
+
     },
     error: function (params) {
 
@@ -36,6 +44,8 @@ function init() {
   });
 
   $('.product-removal button').click(function () {
+    // console.log(this.id);
+
     removeItem(this);
   });
 
