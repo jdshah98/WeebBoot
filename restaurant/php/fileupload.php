@@ -1,6 +1,6 @@
 <?php
 function upload($rid,$name){
-echo $rid;
+// echo $rid;
 $target_dir = "../img/r".$rid."/";
 $target_file = $_FILES['url']['name'];
 //echo "hello ".$target_file;
@@ -40,10 +40,13 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["url"]["tmp_name"],$final_dir )) {
-        echo "The file ". basename( $_FILES["url"]["name"]). " has been uploaded.";
+        // echo "The file ". basename( $_FILES["url"]["name"]). " has been uploaded.";
+        $path = "restaurant/img/r".$rid."/".$name.".".$imageFileType;
+        return $path;
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+return "not uploaded";
 }
 ?>

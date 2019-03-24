@@ -23,12 +23,16 @@ function get_client_ip() {
         $ipaddress = 'UNKNOWN';
     return $ipaddress;
 }
-$name = $_POST["name"];
-$category=$_POST["category"];
-$description=$_POST["description"];
-$price=$_POST["price"];
-$url=$_FILES['url']['name'];
-
+if(isset($_POST['data']) && isset($_FILES['url'])){
+    $data = json_decode($_POST['data'], true);
+    $name = $data[0];
+    $category=$data[1];
+    $description=$data[2];
+    $price=$data[3];
+    $url=$_FILES['url']['name'];
+    // echo 123;
+    // echo $data[0]." :- data 0";
+}
 $sql = "select * from food where name like '$name'";
 $result = mysqli_query($conn,$sql);
 
@@ -38,13 +42,13 @@ if(mysqli_num_rows($result)>0){
 else {
 	$rid=$_SESSION['uid'];
 	//$rid=	(int)$_COOKIE[$cookie_name];
-	 $stmt = $conn->prepare("INSERT INTO food(rid,name,category,ingredients,cost,url) VALUES (?,?,?,?,?,?)");
+    $stmt = $conn->prepare("INSERT INTO food(rid,name,category,ingredients,cost,url) VALUES (?,?,?,?,?,?)");
     $stmt->bind_param("isssis",$rid,$name,$category,$description,$price,$url);
-    $stmt->execute();
+    $stmt->execute(); 
+    $path = upload($rid,$name);
+    echo "img path :- ".$path;
+   
 	echo $rid;
-	upload($rid,$name);
-	echo "Item Added";
+    echo "200";
 }
-
-
 ?>

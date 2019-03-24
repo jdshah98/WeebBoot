@@ -32,13 +32,15 @@ if(mysqli_num_rows($result) > 0)
 	$row = mysqli_fetch_row($result);
 	if(password_verify($pass,$row[3])){
 		$id = $row[0];
-		$_SESSION['uid']=$id;
+		// echo $id;
+		//  $_SESSION['uid']=$id;
 		$_SESSION['uEmail']=$row[2];
 		$_SESSION['uType']=$row[1];
-		$stmt = ("select * from restaurant where uid like '$id'");
+		$stmt = "SELECT * FROM restaurant WHERE `uid` = '$id'";
 		$result = mysqli_query($conn, $stmt);
 		$row = mysqli_fetch_row($result);
 		$id = $row[0];
+		
 		$_SESSION['uid']=$id;
 		$ip=get_client_ip();
 		$stmt2 = $conn->prepare("INSERT INTO session values(?,?,?,?,?,?)");
@@ -46,7 +48,7 @@ if(mysqli_num_rows($result) > 0)
 		$stmt2->execute();
 		setcookie("FoodDelivery[$id]",$row[2]."__".$row[3],time()+3600*24*60);
 		//setcookie("userid",$id,time()+3600*24*60, "/");
-    	echo "login success";
+    	echo "200";
 		
 		
 	}else{

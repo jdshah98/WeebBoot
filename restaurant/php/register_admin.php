@@ -31,6 +31,7 @@ $pass = $_GET['pw'];
 $haspass = password_hash($pass,PASSWORD_DEFAULT);
 
 $sql = "select * from user where uEmail like '$email'";
+
 $result = mysqli_query($conn,$sql);
 
 if(mysqli_num_rows($result)>0){
@@ -55,11 +56,10 @@ if(mysqli_num_rows($result)>0){
     $stmt2 = $conn->prepare("INSERT INTO session values(?,?,?,?,?,?)");
     $stmt2->bind_param("sissss",$_SESSION['sid'],$_SESSION['uid'],$_SESSION['uEmail'],$_SESSION['uType'],time(),$ip);
     $stmt2->execute();*/
-    $stmt = $conn->prepare("INSERT INTO restaurant(uId,rName,rMobile) VALUES(?,?,?)");
+    $stmt = $conn->prepare("INSERT INTO restaurant (uId,rName,rMobile) VALUES (?,?,?)");
     $stmt->bind_param("iss",$id,$name,$mobile);
 	$stmt->execute();
-	echo "restaurant Logged In";
-    
+	echo "200";
     $stmt2->close();
     $stmt->close();
 }

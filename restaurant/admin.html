@@ -37,17 +37,17 @@
   <!-- Login Form-->
 
 	<div id="id01" class="card container">
-		<form action="">
+		
 
 				<h1>Login</h1>
 				<p>Please Enter detail to Login.</p>
 				<hr>
 
 				<label for="loginemail"><b>Email</b></label>
-				<input type="text" placeholder="abc@gmail.com" name="loginemail" required>
+				<input type="text" placeholder="abc@gmail.com" id="loginemail" name="loginemail" required>
 
 				<label for="loginpw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="loginpw" required>
+				<input type="password" placeholder="Enter Password" name="loginpw" id="loginpw" required>
 
 				<label for="newuser">New User ?</label>
 				<button class="btn btn-light" onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'" type="submit">Create new Account</button>
@@ -55,27 +55,27 @@
 				<div class="clearfix">
 					<div class="row">
 						<div class="col-sm-6">
-							<button type="submit" class="signupbtn btn btn-success">Login</button>
+							<button type="submit" class="signupbtn btn btn-success btn-login">Login</button>
 						</div>
 						<div class="col-sm-6">
 							<button type="button" onclick="" class="cancelbtn btn btn-danger">Cancel</button>
 						</div>
 					</div>
 				</div>
-		</form>
+		
 	</div>
 
 	<!--Register-->
 		<div id="id02" class="card container">
-			<form class="" action="">
+		
 					<h1>Sign Up</h1>
 					<p>Please fill in this form to create an account.</p>
 					<hr>
 					<label for="name"><b>Name</b></label>
-					<input type="text" placeholder="Enter Name" name="name" required>
+					<input type="text" placeholder="Enter Name" name="name" id="name"required>
 
 					<label for="email"><b>Email</b></label>
-					<input type="text" placeholder="abc@gmail.com" name="email" required>
+					<input type="text" placeholder="abc@gmail.com" name="email" id="email" required>
 
 					<label for="mobile"><b>Mobile no</b></label>
 					<input type="text" onchange="checkMobile();" placeholder="1234567890" id="mobile" name="mobile" required>
@@ -90,14 +90,14 @@
 					<div class="clearfix">
 						<div class="row">
 							<div class="col-sm-6">
-								<button type="submit" class="signupbtn btn btn-success">Sign Up</button>
+								<button type="submit" class="signupbtn btn btn-success btn-signup">Sign Up</button>
 							</div>
 							<div class="col-sm-6">
 								<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn btn btn-danger">Cancel</button>
 							</div>
 						</div>
 					</div>
-			</form>
+		
 		</div>
 
 
@@ -106,6 +106,52 @@
 <script>
 $(document).ready(function (){
 	$('#id02').css('display','none');
+});
+$('.btn-login').on('click',function(){
+    email=$('#loginemail').val();
+    pass=$('#loginpw').val();
+    $.ajax({
+        url:'./php/login_admin.php',
+		data:{
+			'loginemail':email,
+			'loginpw':pass
+		},
+		type:'get',
+		success:function(params) {
+			if(params == "200")
+			{
+				window.location.href ="add_items.html";
+			}else
+				alert(params);
+			console.log(params);
+			
+		},error:function(error){}
+    });
+});
+$('.btn-signup').on('click',function(){
+	email=$('#email').val();
+	// console.log(email);
+	pass=$('#pw').val();
+	name=$('#name').val();
+	contact=$('#mobile').val();
+	$.ajax({
+		url:'./php/register_admin.php',
+		data:{
+			'email':email,
+			'pw':pass,
+			'name':name,
+			'mobile':contact
+		},
+		type:'get',
+		success:function(params){
+			
+			console.log(params);
+
+		},error:function(error){
+
+		}
+
+	});
 });
 </script>
 
