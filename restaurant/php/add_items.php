@@ -42,12 +42,15 @@ if(mysqli_num_rows($result)>0){
 else {
 	$rid=$_SESSION['uid'];
 	//$rid=	(int)$_COOKIE[$cookie_name];
-    $stmt = $conn->prepare("INSERT INTO food(rid,name,category,ingredients,cost,url) VALUES (?,?,?,?,?,?)");
-    $stmt->bind_param("isssis",$rid,$name,$category,$description,$price,$url);
-    $stmt->execute(); 
+
     $path = upload($rid,$name);
     echo "img path :- ".$path;
-   
+
+    if($path){
+        $stmt = $conn->prepare("INSERT INTO food(rid,name,category,ingredients,cost,url) VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("isssis",$rid,$name,$category,$description,$price,$path);
+        $stmt->execute(); 
+    }
 	echo $rid;
     echo "200";
 }

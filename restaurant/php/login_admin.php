@@ -1,6 +1,7 @@
 <?php
 require 'connection.php';
 session_start();
+error_reporting(0);
 if(!isset($_SESSION['sid'])){
        $_SESSION['sid']=session_id();
 }
