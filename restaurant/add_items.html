@@ -72,7 +72,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="list_items.html">
+                        <a href="./php/list_items.php">
                             <i class="pe-7s-notebook"></i>
                             <p>List Items </p>
                         </a>
@@ -130,8 +130,8 @@
                                 <input type="text" class="form-control Food-Price not-null" id="price" placeholder="Enter Price" required>
                             </div>
 
-                            <div id="message">
-                                <label>Check</label>
+                            <div>
+                                <label id="message" style="color:red;"></label>
                             </div>
                             <div class="required text-center">
                                 <input type="button" style="margin-top:10px;margin-bottom:10px;width:70%;" class="submit-btn btn btn-primary form-control" value="Add Food" required>
@@ -169,8 +169,10 @@
 			// {
 			// 	window.location.href ="add_items.html";
 			// }else
-			// 	alert(params);
-			console.log(params);
+            // 	alert(params);
+            
+            console.log(params);
+            $('#message').html("Food Succesfully Added");
 			
 		},error:function(error){}
     });

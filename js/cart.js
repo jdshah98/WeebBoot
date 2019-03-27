@@ -13,7 +13,7 @@ function itemClick(e) {
             $('.cart-item-name').html(food_item['name']);
             $('.cart-item-discription').html(food_item['ingredients']);
             $('.cart-item-price').html(food_item['cost']);
-            $('.cart-item-img img').attr('src', './img/' + food_item['url']);
+            $('.cart-item-img img').attr('src', './' + food_item['url']);
             $('.btn-block').attr('id', food_item['fid']);
         },
 
@@ -22,6 +22,24 @@ function itemClick(e) {
     });
     console.log(classes[2]);
 }
+$('.btn-cart').on('click',function(){
+    var on = 0;
+    $.ajax({
+        url: './php/sessionStatus.php',
+        success: function (code) {
+            if (parseInt(code) == 200) {
+                window.location.href = "cart.html";
+            }else
+            {
+                alert('Login First');
+            }
+        },
+        error:function(error){
+            alert(error);
+        }
+    });
+   
+});
 
 function cartItemCheckoutClick(e) {
     var on = 0;

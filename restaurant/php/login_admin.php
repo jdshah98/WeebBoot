@@ -42,7 +42,7 @@ if(mysqli_num_rows($result) > 0)
 		$row = mysqli_fetch_row($result);
 		$id = $row[0];
 		
-		$_SESSION['uid']=$id;
+		$_SESSION['rid']=$id;
 		$ip=get_client_ip();
 		$stmt2 = $conn->prepare("INSERT INTO session values(?,?,?,?,?,?)");
 		$stmt2->bind_param("sissss",$_SESSION['sid'],$_SESSION['uid'],$_SESSION['uEmail'],$_SESSION['uType'],time(),$ip);

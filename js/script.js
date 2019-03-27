@@ -17,3 +17,4 @@ $(document).ready(function () {
    $("#cpw").keyup(checkPasswordMatch);
    $("#mobile").keyup(checkMobile);
 });
+

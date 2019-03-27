@@ -40,7 +40,7 @@ if(mysqli_num_rows($result)>0){
     echo "Item already Exists";
 }
 else {
-	$rid=$_SESSION['uid'];
+	$rid=$_SESSION['rid'];
 	//$rid=	(int)$_COOKIE[$cookie_name];
 
     $path = upload($rid,$name);
