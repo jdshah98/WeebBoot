@@ -166,12 +166,24 @@
             </table>
         </div>
     </div>
+    <!-- Floating Button-->
+    <div class="" style="position: fixed; right: 0px;bottom: 6%;z-index: 2;padding:1em;text-align:center">
+        <a href="restaurant/admin.html"> <img class="" width="80px" height="80px" title="Join Us" src="img/user4.png"></a>
+
+
+    </div>
     <!--Floating Button-->
 
     <?php include("./php/footer.php"); ?>
-    
+
     <script src="./js/load.js"></script>
-    
+
+	<script>
+		$('.nav-home').addClass('active');
+		$('.nav-menu').removeClass('active');
+		$('.nav-cart').removeClass('active');
+		$('.nav-about').removeClass('active');
+		</script>
 </body>
 
 </html>

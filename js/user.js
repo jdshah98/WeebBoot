@@ -1,5 +1,12 @@
 $('.btn-login').on('click', function () {
+   login();
+});
+
+function login()
+{
     $('#login-submit').on('click', function () {
+        console.log("login-click");
+        
         email = $('#loginemail').val();
         pass = $('#loginpw').val();
         if (email.length != 0 && pass.length != 0) {
@@ -27,8 +34,7 @@ $('.btn-login').on('click', function () {
         $('#loginemail').val('');
         $('#loginpw').val('');
     });
-});
-
+}
 $(document).ready(function () {
     getCookie();
 });

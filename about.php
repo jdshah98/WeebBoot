@@ -97,6 +97,13 @@
 
 	<!-- Login Form-->
 <?php include("./php/footer.php");?>
+
+<script>
+		$('.nav-about').addClass('active');
+		$('.nav-home').removeClass('active');
+		$('.nav-cart').removeClass('active');
+		$('.nav-menu').removeClass('active');
+		</script>
 </body>
 <script src="./js/cartpage.js"></script>
 

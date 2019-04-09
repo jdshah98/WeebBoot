@@ -62,6 +62,13 @@
 
 	</div>
 	<?php include("./php/footer.php"); ?>
+	
+	<script>
+		$('.nav-cart').addClass('active');
+		$('.nav-home').removeClass('active');
+		$('.nav-menu').removeClass('active');
+		$('.nav-about').removeClass('active');
+		</script>
 </body>
 <script src="./js/cartpage.js"></script>
 

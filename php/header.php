@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Food Delivery System</a>
+        <a class="navbar-brand" href="index.php">Food Delivery System</a>
         <button id="toggle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" style="
     padding-left: 0px;
     padding-right: 0px;
@@ -13,18 +13,18 @@
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item active nav-home">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-menu">
                     <a class="nav-link" href="menu.php">Menu</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item nav-about">
                     <a class="nav-link" href="about.php">About</a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item nav-cart">
                     <button class="btn btn-success btn-cart"><i class="fa fa-cart-arrow-down" style="color:white"></i></button>
                 </li>
                 <li>
@@ -123,11 +123,6 @@
         </div>
     </div>
 </div>
-<!-- Floating Button-->
-<div class="" style="position: fixed; right: 0px;bottom: 6%;z-index: 2;padding:1em;text-align:center">
-	<a href="restaurant/admin.html">	<img class=""  width="80px" height="80px" title="Join Us" src="img/user4.png"></a>
 
-
-</div>
 <script src="./js/user.js"></script>
 <script src="./js/cart.js"></script>

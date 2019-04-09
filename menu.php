@@ -346,6 +346,13 @@
 <!-- Code of menu  ended-->
 
 	<?php include("./php/footer.php");?>
+
+	<script>
+		$('.nav-menu').addClass('active');
+		$('.nav-home').removeClass('active');
+		$('.nav-cart').removeClass('active');
+		$('.nav-about').removeClass('active');
+		</script>
 </body>
 <script src="./js/cartpage.js"></script>
 
