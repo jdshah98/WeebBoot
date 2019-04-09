@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2019 at 11:28 AM
+-- Generation Time: Apr 09, 2019 at 05:20 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -36,22 +36,14 @@ CREATE TABLE `cart` (
   `qty` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `corder`
+-- Dumping data for table `cart`
 --
 
-CREATE TABLE `corder` (
-  `id` int(255) NOT NULL,
-  `cid` int(255) NOT NULL,
-  `vid` int(255) NOT NULL,
-  `time` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `tamt` varchar(255) NOT NULL,
-  `lat_long` varchar(255) NOT NULL,
-  `oAdd` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `cart` (`id`, `cid`, `rid`, `fid`, `qty`) VALUES
+(2, 6, 2, 4, '10'),
+(3, 6, 4, 10, '1'),
+(4, 6, 2, 4, '1');
 
 -- --------------------------------------------------------
 
@@ -71,9 +63,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cId`, `uId`, `cName`, `cMobile`) VALUES
-(1, 1, 'jainam', '8469368554'),
-(2, 2, 'Parth', '9876543210'),
-(3, 3, '', '');
+(1, 4, 'saurabh maheshwari', '1234567890'),
+(2, 6, 'Parth Roy', '9876543210');
 
 -- --------------------------------------------------------
 
@@ -96,9 +87,28 @@ CREATE TABLE `food` (
 --
 
 INSERT INTO `food` (`fid`, `rid`, `name`, `ingredients`, `category`, `cost`, `url`) VALUES
-(1, 1, 'food1', 'This is best food', 'south', '200.00', 'food1.jpg'),
-(2, 1, 'food2', 'This is best food', 'south', '150.00', 'food2.jpg'),
-(3, 1, 'food3', 'This is best food', 'south', '170.00', 'food3.jpg');
+(2, 1, 'Makke Ki Roti', 'The dish is regarded as the traditional way to prepare saag and is usually served with makki di roti ', 'Punjabi', '120', 'restaurant/img/r1/Makke Ki Roti.jpg'),
+(4, 2, 'Chinese Bhel', 'Awesome Food', 'Chinese', '100', 'restaurant/img/r2/Chinese Bhel.jpg'),
+(8, 1, 'Chole Bhature', 'Chhole bhature is often eaten as a breakfast dish, sometimes accompanied with lassi', 'Punjabi', '90', 'restaurant/img/r1/Chole Bhature.jpg'),
+(9, 4, 'Dosa', 'Dosa is a type of pancake or crÃ¨pe, originating from the Indian subcontinent, made from a fermented batter. It is somewhat similar to a crepe in appearance. Its main ingredients are rice and black gram ground together in a fine, smooth batter with a dash', 'South Indian', '120', 'restaurant/img/r4/Dosa.jpg'),
+(10, 4, 'Idli', 'Idli or idly are a type of savoury rice cake, originating from the Indian subcontinent, popular as breakfast foods in southern India and northern Sri Lanka. The cakes are made by steaming a batter consisting of fermented black lentils and rice.', 'south indian', '120', 'restaurant/img/r4/Idli.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `id` int(255) NOT NULL,
+  `cid` int(255) NOT NULL,
+  `vid` int(255) NOT NULL,
+  `time` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `tamt` varchar(255) NOT NULL,
+  `lat_long` varchar(255) NOT NULL,
+  `oAdd` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -111,8 +121,8 @@ CREATE TABLE `restaurant` (
   `uId` int(10) NOT NULL,
   `rName` varchar(255) NOT NULL,
   `rMobile` varchar(255) NOT NULL,
-  `add` varchar(255) NOT NULL,
-  `lat_long` varchar(255) NOT NULL
+  `add` varchar(255) DEFAULT NULL,
+  `lat_long` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -120,7 +130,10 @@ CREATE TABLE `restaurant` (
 --
 
 INSERT INTO `restaurant` (`rId`, `uId`, `rName`, `rMobile`, `add`, `lat_long`) VALUES
-(1, 4, 'rest1', '7845123696', 'surat', '21.2058112,72.8547328');
+(1, 1, 'Shah Jainam', '8469368554', NULL, NULL),
+(2, 2, 'Parth Shekhaliya', '9016632615', NULL, NULL),
+(3, 3, 'Saurabh Maheshwari', '9427793278', NULL, NULL),
+(4, 5, 'Parth', '9876543210', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -142,34 +155,28 @@ CREATE TABLE `session` (
 --
 
 INSERT INTO `session` (`sid`, `uid`, `uEmail`, `uType`, `uTime`, `uIp`) VALUES
-('vmuqpq1gke5hsdpnua7o417129', 1, 'shahjainamj8657@gmail.com', 'customer', '1552993970', '::1'),
-('0fcpgis3ul6cr4su2652kc2c5c', 2, 'royparth94@gmail.com', 'customer', '1552993982', '172.16.3.1'),
-('0fcpgis3ul6cr4su2652kc2c5c', 2, 'royparth94@gmail.com', 'customer', '1552994399', '172.16.3.1'),
-('0fcpgis3ul6cr4su2652kc2c5c', 2, 'royparth94@gmail.com', 'customer', '1552994426', '172.16.3.1'),
-('0fcpgis3ul6cr4su2652kc2c5c', 2, 'royparth94@gmail.com', 'customer', '1552994430', '172.16.3.1'),
-('0fcpgis3ul6cr4su2652kc2c5c', 2, 'royparth94@gmail.com', 'customer', '1552995146', '172.16.3.1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334688', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334694', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334710', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334710', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334711', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334712', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334712', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334712', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334712', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334753', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334753', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334753', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334753', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334754', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334754', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334754', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334754', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334754', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334754', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334755', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334755', '::1'),
-('9akmc7m2nii9kecfl1g5g7pdum', 3, '', 'customer', '1553334755', '::1');
+('l379mv3s39d0vldpgm7gpbsfq4', 3, 'saurabh.maheshwari1011@gmail.com', 'restaurant', '1553666365', '172.16.3.1'),
+('kjflbf185nucg3qiganeansdul', 2, 'parthshekhaliya17@gmail.com', 'restaurant', '1553666399', '172.16.3.1'),
+('7spk8f11603ep8vf4cfpm8h0k6', 1, 'shahjainamj8657@gmail.com', 'restaurant', '1553666412', '172.16.3.1'),
+('shfnbaj4098702s43kov6rmvqq', 1, 'shahjainamj8657@gmail.com', 'restaurant', '1553666881', '172.16.3.1'),
+('f9vn833o4t4jdofjcubeo972qu', 2, 'parthshekhaliya17@gmail.com', 'restaurant', '1553666935', '172.16.3.1'),
+('ms66h85gp7mfja8an6not9soe5', 4, 'saur98@gmail.com', 'customer', '1553667028', '172.16.3.1'),
+('shfnbaj4098702s43kov6rmvqq', 1, 'shahjainamj8657@gmail.com', 'restaurant', '1553668153', '172.16.3.1'),
+('ms66h85gp7mfja8an6not9soe5', 4, 'saurabh.maheshwari1011@gmail.com', 'restaurant', '1553668438', '172.16.3.1'),
+('f9vn833o4t4jdofjcubeo972qu', 2, 'parthshekhaliya17@gmail.com', 'restaurant', '1553668459', '172.16.3.1'),
+('ms66h85gp7mfja8an6not9soe5', 4, 'shahjainamj8657@gmail.com', 'restaurant', '1553670071', '172.16.3.1'),
+('vrnolqnlm3a3rdj3c8gla7s8jt', 2, 'royparth94@gmail.com', 'restaurant', '1553834929', '::1'),
+('vrnolqnlm3a3rdj3c8gla7s8jt', 2, 'royparth94@gmail.com', 'restaurant', '1554271990', '::1'),
+('vrnolqnlm3a3rdj3c8gla7s8jt', 2, 'royparth94@gmail.com', 'restaurant', '1554734293', '::1'),
+('nab8ilp428mc764kvm8keg6m36', 6, 'royparth20@gmail.com', 'customer', '1554783953', '172.16.3.1'),
+('nab8ilp428mc764kvm8keg6m36', 6, 'royparth20@gmail.com', 'customer', '1554784211', '172.16.3.1'),
+('nab8ilp428mc764kvm8keg6m36', 6, 'royparth94@gmail.com', 'restaurant', '1554784853', '172.16.3.1'),
+('nab8ilp428mc764kvm8keg6m36', 6, 'royparth20@gmail.com', 'customer', '1554785144', '172.16.3.1'),
+('vrnolqnlm3a3rdj3c8gla7s8jt', 6, 'royparth20@gmail.com', 'customer', '1554787724', '::1'),
+('jnoc2n3026h89542qblprutvbb', 6, 'royparth20@gmail.com', 'customer', '1554793168', '172.16.3.1'),
+('jnoc2n3026h89542qblprutvbb', 6, 'royparth20@gmail.com', 'customer', '1554793511', '172.16.3.1'),
+('jnoc2n3026h89542qblprutvbb', 6, 'royparth20@gmail.com', 'customer', '1554793872', '172.16.3.1'),
+('jnoc2n3026h89542qblprutvbb', 6, 'royparth20@gmail.com', 'customer', '1554794248', '172.16.3.1');
 
 -- --------------------------------------------------------
 
@@ -189,10 +196,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`uId`, `uType`, `uEmail`, `uPassword`) VALUES
-(1, 'customer', 'shahjainamj8657@gmail.com', '$2y$10$EjVGmZcPqBd/zWt1YW.Hou4DlaAtJwC2WSPEzp5coOdIZBvfxin7C'),
-(2, 'customer', 'royparth94@gmail.com', '$2y$10$lwtYiUuEqm1342zrrAZgQeNMdVjnd3J9QXdO99K6ptYJ2C9Z8cbDq'),
-(3, 'customer', '', '$2y$10$IX7eiQ/yBzfI6AnB.a5YBepKp6qfuwyIIGAj9UmR9oLv8p0M50Koy'),
-(4, 'restaurant', 'rest@gmail.com', '123');
+(1, 'restaurant', 'shahjainamj8657@gmail.com', '$2y$10$lCI/iH3Lp5NWRcs.rX7/7OGe91.hgQz1ozXGuMdNItOQrgzW4vfO2'),
+(2, 'restaurant', 'parthshekhaliya17@gmail.com', '$2y$10$Ycs7tHTEXFQxTbDF6UEDQOW56xtZ545bAMmt2dN8om0y3g6h1XerW'),
+(3, 'restaurant', 'saurabh.maheshwari1011@gmail.com', '$2y$10$.B4Gmf0imTQKqle.kMxYz.kfcRZx3cW9v8TtluClKI5kHoLk4WAPC'),
+(4, 'customer', 'saur98@gmail.com', '$2y$10$tqUi5Lmnxr92iP/MZ0Y14uHF4HMRnVnYmqGmrgmMTpcbN1OJR5bES'),
+(5, 'restaurant', 'royparth94@gmail.com', '$2y$10$j.lV6Mt22el3dhcluersH.g8sBFNJM5YTAlnFn6Aail5d7aqL4HkO'),
+(6, 'customer', 'royparth20@gmail.com', '$2y$10$83LN2BvSfbcMUgTKSEHjJO6hc2zl6zRZx91PvvFayW5Y6/hBk32S2');
 
 -- --------------------------------------------------------
 
@@ -219,12 +228,6 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `corder`
---
-ALTER TABLE `corder`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -235,6 +238,12 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `food`
   ADD PRIMARY KEY (`fid`);
+
+--
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `restaurant`
@@ -262,37 +271,37 @@ ALTER TABLE `vehicle`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `corder`
---
-ALTER TABLE `corder`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `fid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `fid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `restaurant`
 --
 ALTER TABLE `restaurant`
-  MODIFY `rId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `rId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `uId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `vehicle`
