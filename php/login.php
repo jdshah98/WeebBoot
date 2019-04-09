@@ -38,7 +38,7 @@ if(mysqli_num_rows($result) > 0)
 		$stmt2 = $conn->prepare("INSERT INTO session values(?,?,?,?,?,?)");
 		$stmt2->bind_param("sissss",$_SESSION['sid'],$_SESSION['uid'],$_SESSION['uEmail'],$_SESSION['uType'],time(),$ip);
 		$stmt2->execute();
-		setcookie("FoodDelivery[$id]",$row[2]."__".$row[3],time()+3600*24*60);
+		setcookie("user",$row[1]."__".$row[2]."__".$row[3], time()+86400*60,"/");
     	echo "login success";
 	}else{
 		echo "username or password is invalid";

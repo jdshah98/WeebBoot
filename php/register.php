@@ -35,22 +35,19 @@ $sql = "select * from user where uEmail like '$email'";
 $result = mysqli_query($conn,$sql);
 
 if(mysqli_num_rows($result)>0){
-    echo "User already Exist";
+    echo "401";
 }else{
     $stmt = $conn->prepare("INSERT INTO user(uType,uEmail,uPassword) VALUES (?,?,?)");
     $stmt->bind_param("sss",$type,$email,$haspass);
     $stmt->execute();
-    $sql = "select * from user where uEmail like '$email'";
-    
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_row($result);
     $id = $row[0];
-
     $_SESSION['uid']=$id;
     $_SESSION['uEmail']=$row[2];
     $_SESSION['uType']=$row[1];
     $ip=get_client_ip();
-    setcookie("FoodDelivery[$id]",$row[2]."__".$row[3],time()+3600*24*60);
+    setcookie("user",$row[1]."__".$row[2]."__".$row[3], time()+86400*60,"/");
     $stmt2 = $conn->prepare("INSERT INTO session values(?,?,?,?,?,?)");
     $stmt2->bind_param("sissss",$_SESSION['sid'],$_SESSION['uid'],$_SESSION['uEmail'],$_SESSION['uType'],time(),$ip);
     $stmt2->execute();
@@ -59,11 +56,11 @@ if(mysqli_num_rows($result)>0){
         $stmt = $conn->prepare("INSERT INTO customer(uId,cName,cMobile) values(?,?,?)");
         $stmt->bind_param("iss",$id,$name,$mobile);
         $stmt->execute();
-        echo "User Logged In";
+        echo "200";
     }else if($type=="restaurant"){
         $stmt = $conn->prepare("INSERT INTO restaurant(uId,rName,rMobile) values(?,?,?)");
         $stmt->bind_param("iss",$id,$name,$mobile);
-        echo "User Logged In";
+        echo "200";
     }
     $stmt2->close();
     $stmt->close();

@@ -12,7 +12,6 @@
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<link href="css/style.css" rel="stylesheet">
-	
 	<link rel="shortcut icon" type="image/png" href="./img/favicon.png">
 </head>
 
@@ -38,7 +37,7 @@
 						<a class="nav-link" href="index.html">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="menu.html">Menu</a>
+						<a class="nav-link" href="#">Menu</a>
 					</li>
 
 					<li class="nav-item">
@@ -46,15 +45,15 @@
 					</li>
 
 					<li>
-					<div class="input-group-btn btn-group">
-						<button class="btn btn-outline-success"
-							onclick="document.getElementById('id01').style.display='block',document.getElementById('id02').style.display='none'"
-							type="submit">Login</button>
-						<button class="btn btn-outline-primary"
-							onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
-							type="submit">Sign UP</button>
-					</div>
-				</li>
+						<div class="input-group-btn btn-group btn-dynamic">
+							<button class="btn btn-outline-success btn-login"
+								onclick="document.getElementById('id01').style.display='block',document.getElementById('id02').style.display='none'"
+								type="submit">Login</button>
+							<button class="btn btn-outline-primary btn-signup"
+								onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
+								type="submit">Sign UP</button>
+						</div>
+					</li>
 					<!--<div class="input-group-btn">
 						<button class="btn btn-light"
 							onclick="document.getElementById('id03').style.display='block',document.getElementById('id02').style.display='none'"
@@ -63,10 +62,10 @@
 					</div>-->
 
 					<li class="nav-item">
-						<a  href="#" ><button class="btn btn-success btn-cart"><i class="fa fa-cart-arrow-down" style="color:white"></i></button>
-						</a>
+						<button class="btn btn-success btn-cart"><i class="fa fa-cart-arrow-down"
+									style="color:white"></i></button>
 					</li>
-					
+
 					<!-- <li class="nav-item"><div class="person-name"></div></li> -->
 				</ul>
 			</div>
@@ -163,20 +162,25 @@
 	<div id="id01" class="modal">
 		<div class="modal-content">
 			<div class="container">
-				<i class="fa fa-window-close" aria-hidden="true"
-					onclick="document.getElementById('id01').style.display='none'"></i>
-
-				<h1>Login</h1>
-
+				<div class="row">
+					<div class="col-sm-10">
+						<h1>Login</h1>
+					</div>
+					<div class="col-sm-2">
+						<i class="fa fa-window-close" style="font-size: 24px" aria-hidden="true"
+							onclick="document.getElementById('id01').style.display='none'"></i>
+					</div>
+				</div>
 				<p>Please Enter detail to Login.</p>
 				<hr>
 
 				<label for="loginemail"><b>Email</b></label>
-				<input type="text" placeholder="abc@gmail.com" name="loginemail" required id="loginemail">
+				<input type="text" placeholder="abc@gmail.com" name="loginemail" id="loginemail">
 
 				<label for="loginpw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="loginpw" required id="loginpassword">
+				<input type="password" placeholder="Enter Password" name="loginpw" id="loginpw">
 
+				<span id="log-message"></span>
 				<label for="newuser">New User ?</label>
 				<button class="btn btn-link"
 					onclick="document.getElementById('id02').style.display='block',document.getElementById('id01').style.display='none'"
@@ -188,8 +192,7 @@
 							<button type="submit" id="login-submit" class="signupbtn btn btn-success">Login</button>
 						</div>
 						<div class="col-sm-6">
-							<button type="reset" class="cancelbtn btn btn-danger">Reset</button>
-
+							<input type="reset" id="login-reset" onclick="clear();" class="cancelbtn btn btn-danger" value="Reset"/>
 						</div>
 					</div>
 				</div>
@@ -213,38 +216,44 @@
 	<div id="id02" class="modal">
 		<div class="modal-content">
 			<div class="container">
-				<i class="fa fa-window-close" aria-hidden="true"
-					onclick="document.getElementById('id02').style.display='none'"></i>
-				<h1>Sign Up</h1>
+				<div class="row">
+					<div class="col-sm-10">
+						<h1>Sign Up</h1>
+					</div>
+					<div class="col-sm-2">
+						<i class="fa fa-window-close" style="font-size: 24px" aria-hidden="true"
+							onclick="document.getElementById('id02').style.display='none'"></i>
+					</div>
+				</div>
 				<p>Please fill in this form to create an account.</p>
 				<hr>
 				<label for="name"><b>Name</b></label>
-				<input type="text" placeholder="Enter Name" name="name" required id="name">
-
+				<input type="text" placeholder="Enter Name" name="name" id="name">
+				<span id='name-val'></span>
+				
 				<label for="email"><b>Email</b></label>
-				<input type="text" placeholder="abc@gmail.com" name="email" required id="email">
+				<input type="text" placeholder="abc@gmail.com" name="email" id="email">
+				<span id='em-val'></span>
 
 				<label for="mobile"><b>Mobile no</b></label>
-				<input type="text" onchange="checkMobile();" placeholder="1234567890" id="mobile" name="mobile"
-					required>
+				<input type="text" placeholder="1234567890" id="mobile" name="mobile">
+				<span id='mb-val'></span>
 
 				<label for="pw"><b>Password</b></label>
-				<input type="password" onchange="checkPasswordMatch();" placeholder="Enter Password" id="pw" name="pw"
-					required>
+				<input type="password" placeholder="Enter Password" id="pw" name="pw">
+				<span id='pw-val'></span>
 
 				<label for="cpw"><b>Confirm Password</b></label>
-				<input type="password" onchange="checkPasswordMatch();" placeholder="Confirm Password" id="cpw"
-					name="cpw" required>
+				<input type="password" placeholder="Confirm Password" id="cpw" name="cpw">
+				<span id='cpw-val'></span>
 
-				<span id='message'></span>
 				<div class="clearfix">
 					<div class="row">
 						<div class="col-sm-6">
-							<button type="submit" id="submit" class="signupbtn btn btn-success">Sign Up</button>
+							<button type="submit" id="signup-submit" class="signupbtn btn btn-success">Sign Up</button>
 						</div>
 						<div class="col-sm-6">
-							<button type="reset" class="cancelbtn btn btn-danger">Reset</button>
-
+							<button type="reset" id="signup-reset" onclick="clearAll();" class="cancelbtn btn btn-danger">Reset</button>
 						</div>
 					</div>
 				</div>
@@ -274,8 +283,8 @@
 					<tr>
 						<td data-th="Product">
 							<div class="row">
-								<div class="col-sm-2 col-md-6 hidden-xs cart-item-img"><img src="./img/food1.jpg" width="100px"
-										height="100px" alt="Cart Image" class="img-responsive" /></div>
+								<div class="col-sm-2 col-md-6 hidden-xs cart-item-img"><img src="./img/food1.jpg"
+										width="100px" height="100px" alt="Cart Image" class="img-responsive" /></div>
 								<div class="col-sm-10 col-md-6">
 									<h4 class="cart-item-name nomargin">Product 1</h4>
 									<p class="cart-item-discription">Discription of Product 1</p>
@@ -292,10 +301,12 @@
 							<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
 						</td>
 					</tr>
-					
+
 				</tbody>
 				<tfoot>
-					<tr><div class="cart-item-logininvalid"></div></tr>
+					<tr>
+						<div class="cart-item-logininvalid"></div>
+					</tr>
 					<tr class="visible-xs">
 						<!-- <td class="text-center"><strong>Total 1.99</strong></td> -->
 					</tr>
@@ -303,8 +314,10 @@
 						<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
 						</td>
 						<td colspan="2" class="hidden-xs"></td>
-						<td class="hidden-xs text-center"><strong>Total <div class="cart-item-total">$1.99</div></strong></td>
-						<td><a href="#" class="btn btn-success btn-block" onclick="cartItemCheckoutClick(this)">Checkout <i class="fa fa-angle-right"></i></a>
+						<td class="hidden-xs text-center"><strong>Total <div class="cart-item-total">$1.99</div>
+								</strong></td>
+						<td><a href="#" class="btn btn-success btn-block" onclick="cartItemCheckoutClick(this)">Checkout
+								<i class="fa fa-angle-right"></i></a>
 						</td>
 					</tr>
 				</tfoot>
@@ -321,10 +334,9 @@
 			</div>
 		</div>
 	</footer>
-	<script type="text/javascript" src="js/script.js"></script>
-	<script src="./js/register.js"></script>
-	<script src="./js/login.js"></script>
+	<script src="./js/user.js"></script>
 	<script src="./js/load.js"></script>
 	<script src="./js/cart.js"></script>
 </body>
+
 </html>
