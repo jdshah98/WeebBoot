@@ -28,7 +28,7 @@ $('.btn-cart').on('click',function(){
         url: './php/sessionStatus.php',
         success: function (code) {
             if (parseInt(code) == 200) {
-                window.location.href = "cart.html";
+                window.location.href = "cart.php";
             }else
             {
                 alert('Login First');
@@ -60,7 +60,7 @@ function cartItemCheckoutClick(e) {
                     type: 'get',
                     success: function (params) {
                         console.log(params);
-                        window.location.href = "cart.html";
+                        window.location.href = "cart.php";
                     },
                     error: function (params) {
                         alert(params)
