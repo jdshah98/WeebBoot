@@ -14,7 +14,7 @@ session_start();
 
 
 
-    <title>Library Management</title>
+    <title>Food Delivery System</title>
 
 
 
@@ -129,7 +129,7 @@ session_start();
                         </a>
                     </li>
                     <li>
-                        <a href="../order_list.html">
+                        <a href="../order_list.php">
                             <i class="pe-7s-notebook"></i>
                             <p>Order List </p>
                         </a>

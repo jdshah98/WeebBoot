@@ -62,7 +62,7 @@
 						<p style="font-weight: 400;font-size: 20px;">Parth Roy</p>
 						<hr style="background-color:black;margin-top: -10px;margin-bottom:0px; height: 1px">
 						<p style="font-size: 15px">parthroy94@gmail.com</p>
-						<p>+91 9016632615</p>
+						<p>+91 9712448794</p>
 					</div>
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 						<p style="font-weight: 400;font-size: 20px;">Jainam Shah</p>
 						<hr style="background-color:black;margin-top: -10px;margin-bottom:0px; height: 1px">
 						<p style="font-size: 15px">shahjainamj8657@gmail.com</p>
-						<p>+91 9016632615</p>
+						<p>+91 8469368554</p>
 					</div>
 				</div>
 			</div>
@@ -83,8 +83,8 @@
 					<div class="card-body">
 						<p style="font-weight: 400;font-size: 20px;">Saurabh Maheshwari</p>
 						<hr style="background-color:black;margin-top: -10px;margin-bottom:0px; height: 1px">
-						<p style="font-size: 15px">saurabh.maheshwari1011@gmail.com</p>
-						<p>+91 9016632615</p>
+						<p style="font-size: 15px">saurabh.maheshwari@gmail.com</p>
+						<p>+91 9427793278</p>
 					</div>
 				</div>
 			</div>

@@ -58,7 +58,7 @@
 			</div>
 		</div>
 
-		<button class="checkout">Checkout</button>
+		<div class="checkout">Checkout</div>
 
 	</div>
 	<?php include("./php/footer.php"); ?>
@@ -71,6 +71,6 @@
 		</script>
 </body>
 <script src="./js/cartpage.js"></script>
-
+<script src="./js/order.js"></script>
 
 </html>
