@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Food Delivery System | Menu</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
@@ -87,54 +87,54 @@
 <!-- Code of menu-->
 
 
-<div>
 
-<button class="tablink" onclick="openPage('Chinese', this, '#9E1030')" >Chinese</button>
-<button id="defaultOpen" class="tablink" onclick="openPage('Southindian', this, '#DD4132')">South Indian</button>
-<button class="tablink" onclick="openPage('Punjabi', this, '#00539C')">Punjabi</button>
-<button class="tablink" onclick="openPage('Gujrati', this, '#D69C2F')">Gujrati</button>
-<button class="tablink" onclick="openPage('Amerikan', this, '#5A3E36')">Amerikan</button>
+	<div class="tablink" id="chinese">Chinese</div>
+	<div class="tablink" id="south">South Indian</div>
+	<div class="tablink" id="punjabi">Punjabi</div>
+	<div class="tablink" id="gujarati">Gujarati</div>
+	<div class="tablink" id="american">American</div>
 
-
-<div id="Chinese" class="tabcontent">
-    <h3>Chinese Food</h3>
-    
-
-		<div class="container-fluid">
-			<div class="row padding">
-				<div class="col-md-4">
-					<div class="card shadow-lg p-0 mb-4 bg-light">
-						<img class="card-img-top" src="./img/food1.jpg">
-						<div class="card-body">
-							<p>Cherry Pie</p>
-							<p>$10</p>
-							<a href="#" class="btn btn-outline-secondary">Add to Cart</a>
-						</div>
+	<div class="container-fluid">
+			<div class="row padding display">
+			</div>
+	</div>
+<!-- <div id="Chinese" class="tabcontent">
+	<h3>Chinese Food</h3>
+	<div class="container-fluid">
+		<div class="row padding">
+			<div class="col-md-4">
+				<div class="card shadow-lg p-0 mb-4 bg-light">
+					<img class="card-img-top" src="./img/food1.jpg">
+					<div class="card-body">
+						<p>Cherry Pie</p>
+						<p>$10</p>
+						<a href="#" class="btn btn-outline-secondary">Add to Cart</a>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="card shadow-lg p-0 mb-4 bg-light">
-						<img class="card-img-top" src="./img/food2.jpg">
-						<div class="card-body">
-							<p>Grilled Bass</p>
-							<p>$10</p>
-							<a href="#" class="btn btn-outline-secondary">Add to Cart</a>
-						</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card shadow-lg p-0 mb-4 bg-light">
+					<img class="card-img-top" src="./img/food2.jpg">
+					<div class="card-body">
+						<p>Grilled Bass</p>
+						<p>$10</p>
+						<a href="#" class="btn btn-outline-secondary">Add to Cart</a>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="card shadow-lg p-0 mb-4 bg-light">
-						<img class="card-img-top" src="./img/food3.jpg">
-						<div class="card-body">
-							<p>Vegan Charcuterie</p>
-							<p>$10</p>
-							<a href="#" class="btn btn-outline-secondary">Add to Cart</a>
-						</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card shadow-lg p-0 mb-4 bg-light">
+					<img class="card-img-top" src="./img/food3.jpg">
+					<div class="card-body">
+						<p>Vegan Charcuterie</p>
+						<p>$10</p>
+						<a href="#" class="btn btn-outline-secondary">Add to Cart</a>
 					</div>
 				</div>
 			</div>
 		</div>
-  </div>
+	</div>
+</div>
   
 
 <div id="Southindian" class="tabcontent">
@@ -274,11 +274,6 @@
 
   <div id="Amerikan" class="tabcontent">
     <h3>Amerikan Food</h3>
-
-
-
-
-    
 		<div class="container-fluid">
 			<div class="row padding">
 				<div class="col-md-4">
@@ -320,10 +315,10 @@
   </div>
   
 
-</div>
+</div> -->
 
 
-<script>
+<!-- <script>
     function openPage(pageName, elmnt, color) {
       var i, tabcontent, tablinks;
       tabcontent = document.getElementsByClassName("tabcontent");
@@ -340,7 +335,7 @@
 
     // Get the element with id="defaultOpen" and click on it
     document.getElementById("defaultOpen").click();
-  </script>
+  </script> -->
 
 
 <!-- Code of menu  ended-->
@@ -353,8 +348,8 @@
 		$('.nav-cart').removeClass('active');
 		$('.nav-about').removeClass('active');
 		</script>
+	<script src="./js/cartpage.js"></script>
+	<script src="js/menu.js"></script>
 </body>
-<script src="./js/cartpage.js"></script>
-
 
 </html>
