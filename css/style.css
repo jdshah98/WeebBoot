@@ -112,7 +112,7 @@ footer {
 
 /*Login.html*/
 /* Full-width input fields */
-.container input[type=text], input[type=password] {
+.container input[type=text], input[type=password], input[type=textarea] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -329,6 +329,7 @@ label {
 } 
 
 
+
 .tabcontent {
   color: black;
   display: none;
@@ -343,9 +344,14 @@ label {
 #Contact {background-color: #ffffff;}
 
 
+/*feedback*/
+.feedback{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 30px;
+  overflow: hidden;
 
-
-
+}
 
 
 /* Make adjustments for tablet */

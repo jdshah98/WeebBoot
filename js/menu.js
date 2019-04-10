@@ -1,30 +1,46 @@
 $(document).ready(function(){
+    $('#gujarati ,#american,#punjabi,#south,#chinese').css('background-color','#555555');
+    $('#south').css('background-color','#dd4132');
     generate('south indian');
 });
 
 $('#chinese').on('click',function(){
     $('.display').html('');
     generate('chinese');
+    $('#gujarati ,#american,#punjabi,#south,#chinese').css('background-color','#555555');
+    $('#chinese').css('background-color','#9e1030');
+    
+    
+    
 });
 
 $('#south').on('click',function(){
     $('.display').html('');
     generate('south indian');
+    $('#gujarati ,#american,#punjabi,#south,#chinese').css('background-color','#555555');
+    $('#south').css('background-color','#dd4132');
 });
 
 $('#punjabi').on('click', function () {
     $('.display').html('');
     generate('punjabi');
+    $('#gujarati ,#american,#punjabi,#south,#chinese').css('background-color','#555555');
+    $('#punjabi').css('background-color','#00539c');
 });
 
 $('#american').on('click', function () {
     $('.display').html('');
     generate('american');
+    $('#gujarati ,#american,#punjabi,#south,#chinese').css('background-color','#555555');
+    $('#american').css('background-color','#d69c2f');
 });
 
 $('#gujarati').on('click', function () {
     $('.display').html('');
     generate('gujarati');
+    
+    $('#gujarati ,#american,#punjabi,#south,#chinese').css('background-color','#555555');
+    $('#gujarati').css('background-color','#fa3e36');
 });
 
 function generate(category){
@@ -38,8 +54,9 @@ function generate(category){
             console.log(data);
             var foods = JSON.parse(data);
             foods.forEach(element => {
-                var food_items = '<div class="col-md-4 item-div-' + element['fid'] + '"><div class="card shadow-lg p-0 mb-4 bg-light"><img class="card-img-top" src="./' + element['url'] + '"><div class="card-body"><p>' + element['name'] + '</p><p>' + element['cost'] + '</p><a href="#" onclick="itemClick(this)" class="btn btn-outline-secondary ' + element['fid'] + '">Add to Cart</a></div></div></div>';
+                var food_items = '<div class="col-md-4 item-div-' + element['fid'] + '"><div class="card shadow-lg p-0 mb-4 bg-light"><img class="card-img-top" src="./' + element['url'] + '"><div class="card-body"><p>' + element['name'] + '</p><p>' + element['cost'] + '</p><a href="#" onclick="cartItemCheckoutClick(this)" class="btn btn-outline-secondary ' + element['fid'] + '" id="'+element['fid']+'">Add to Cart</a></div></div></div>';
                 $('.display').append(food_items);
+                login();
                 $('.card-img-top').css('height', '300px');
             });
 

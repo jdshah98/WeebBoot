@@ -5,7 +5,6 @@ $('.btn-login').on('click', function () {
 function login()
 {
     $('#login-submit').on('click', function () {
-        console.log("login-click");
         
         email = $('#loginemail').val();
         pass = $('#loginpw').val();
@@ -18,6 +17,7 @@ function login()
                     "pass": pass
                 },
                 success: function (data) {
+                    console.log("login-click");
                     $('#id01').css('display', 'none');
                     getCookie();
                 },

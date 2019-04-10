@@ -23,9 +23,7 @@
 
 	<link rel="shortcut icon" type="image/png" href="./img/favicon.png">
 	<style>
-	.card-body{
-		height: 150px;
-	}
+	
 	.card-img-top{
 		height: 200px;
 		width: 200px;
@@ -93,6 +91,32 @@
 		</div>
 	</div>
 
+	<div class="container-fluid">
+			<div class="heading text-center">
+				<h2 class="text-center" style="margin-top:30px;">Give us Feedback</h2>
+				<hr>
+			</div>
+		</div>
+
+		<div class="card container bg-dark text-white feedback">
+				<div class="card-body">
+					<div class="feed">
+						<label style="color:white;">Name </label>
+						<input type="text" placeholder="Name" id="feedbackname">
+				</div>
+				<div class="feed" >
+						<label style="color:white;">Email </label>
+						<input type="text" placeholder="Email" id="feedbackemail">
+				</div>
+				<div class="feed" >
+						<label style="color:white;">Comment </label>
+						<input type="textarea" rows="4" placeholder="Add Comment here..." cols="50" id="feedbackcomment">
+				</div>
+				<input type="submit" class="btn btn-success">
+				</div>
+				
+
+</div>
 
 
 	<!-- Login Form-->

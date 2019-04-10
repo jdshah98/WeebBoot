@@ -68,7 +68,7 @@ function cartItemCheckoutClick(e) {
                     url: './php/addtocart.php',
                     data: {
                         'fid': e.id,
-                        'noofitem': $('.cart-noof-item').val()
+                        'noofitem': '1'
                     },
                     type: 'get',
                     success: function (params) {
