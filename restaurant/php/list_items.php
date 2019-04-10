@@ -223,8 +223,8 @@ session_start();
                                 $stmt = "select * from food where rid = " . $rid;
                                 $result = mysqli_query($conn, $stmt);
                                 while ($row = mysqli_fetch_row($result)) {
-                                    $rid = $row[1];
-                                    $fid = $row[0];
+                                    $rid = $row[0];
+                                    $fid = $row[1];
                                     $name = $row[2];
                                     $ingredients = $row[3];
                                     $category = $row[4];

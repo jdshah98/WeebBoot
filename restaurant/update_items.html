@@ -58,14 +58,27 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-                  
+
                     <li>
-                        <a href="update_items.html">
-                            <i class="pe-7s-note2"></i>
-                            <p>Update Items</p>
+                        <a href="add_items.html">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Add New Items</p>
                         </a>
                     </li>
-                    
+
+
+                    <li>
+                        <a href="./php/list_items.php">
+                            <i class="pe-7s-notebook"></i>
+                            <p>List Items </p>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="order_list.html">
+                            <i class="pe-7s-notebook"></i>
+                            <p>Order List </p>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
@@ -94,7 +107,6 @@
                                 <label class="control-label" for="input1">Food Name: </label>
                                 <input type="text" class="form-control Food-name not-null" id="name" placeholder="Enter Food Name" required>
                             </div>
-
                             <div class="form-group required">
                                 <label class="control-label" for="input4">Category : </label>
                                 <input type="text" class="form-control Food- not-null" id="category" placeholder="Enter Food Category" required>
@@ -107,17 +119,16 @@
                                 <label class="control-label" for="input6">Food Image Url: </label>
                                 <input type="file" class="form-control Food-url not-null" id="url" placeholder="Enter Image URL" required>
                             </div>
-                            <div class="form-group required " id="item-img" >
+                            <div class="form-group required " id="item-img">
                                 <label class="control-label" for="input6">Price: </label>
                                 <img src="" width="100" height="100">
                                 <input type="text" class="form-control Food-Price not-null" id="price" placeholder="Enter Price" required>
                             </div>
-
-                            <div class="required text-center">
-                                <input type="button" style="margin-top:10px;margin-bottom:10px;width:70%;" class="submit-btn btn btn-primary form-control" value="Update Food" required>
+                            <div>
+                                <label id="message" style="color:red;"></label>
                             </div>
                             <div class="required text-center">
-                                <input type="button" style="margin-top:10px;margin-bottom:10px;width:70%;" class="submit-btn btn btn-primary form-control" value="Cancel" required>
+                                <input type="button" style="margin-top:10px;margin-bottom:10px;width:70%;" class="submit-btn btn btn-primary form-control" value="Update Food" required>
                             </div>
 
                         </div>
@@ -137,13 +148,45 @@
                     $('#name').val(params[2]);
                     $('#category').val(params[4]);
                     $('#description').val(params[3]);
-                    $('#item-img img').attr('src',"../"+params[6]);
+                    $('#item-img img').attr('src', "../" + params[6]);
+                    
                     $('#price').val(params[5]);
                     console.log(params);
                     
+                    
                 }   
             });
+            
+        });
+        $('.submit-btn').on('click', function () {
+            name = $('#name').val();
+            category = $('#category').val();
+            description = $('#description').val();
+            // url=$('#url').val();
+            price = $('#price').val();
+            file_data = $('#url').prop('files')[0];
+            item = [name, category, description, price];
+            item_data = new FormData();
+            item_data.append('data', JSON.stringify(item));
+            item_data.append('url', file_data);
 
+            $.ajax({
+                url: './php/update_items.php',
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: "post",
+                data: item_data,
+                success: function (params) {
+                    if (params == "200") {
+                        window.location.href = "./php/list_items.php";
+                        $('#message').html("Food Updated Succesfully");
+                    } else
+                        alert(params);
+
+                }, error: function (error) { }
+            });
         });
     </script>
 </body>

@@ -15,14 +15,14 @@ if(isset($_POST["submit"])) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        return "File is not an image.";
         $uploadOk = 0;
     }
 }
 
 // Check file size
 if ($_FILES["url"]["size"] > 50000000) {
-    echo "Sorry, your file is too large.";
+    return "Sorry, your file is too large.";
     $uploadOk = 0;
 }
 if (!file_exists($target_dir)) {
@@ -31,12 +31,13 @@ if (!file_exists($target_dir)) {
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    return "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
+	return 0;
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["url"]["tmp_name"],$final_dir )) {
@@ -44,9 +45,10 @@ if ($uploadOk == 0) {
         $path = "restaurant/img/r".$rid."/".$name.".".$imageFileType;
         return $path;
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        return "Sorry, there was an error uploading your file.";
+		
     }
 }
-return "not uploaded";
+//return "not uploaded";
 }
 ?>

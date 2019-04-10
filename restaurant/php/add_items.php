@@ -44,14 +44,21 @@ else {
 	//$rid=	(int)$_COOKIE[$cookie_name];
 
     $path = upload($rid,$name);
-    echo "img path :- ".$path;
+    //echo "img path :- ".$path;
 
-    if($path){
+    if(strpos($path,'restaurant')!==false)
+	{
         $stmt = $conn->prepare("INSERT INTO food(rid,name,category,ingredients,cost,url) VALUES (?,?,?,?,?,?)");
         $stmt->bind_param("isssis",$rid,$name,$category,$description,$price,$path);
         $stmt->execute(); 
-    }
-	echo $rid;
-    echo "200";
+		echo "200";
+    }	
+	else 
+	{
+	echo $path;
+	}
 }
+	//echo $rid;
+    
+
 ?>

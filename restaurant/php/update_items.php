@@ -24,31 +24,71 @@ function get_client_ip() {
     return $ipaddress;
 }
 $fid=$_SESSION["fid"];
-$name = $_POST["name"];
-$category=$_POST["category"];
-$description=$_POST["description"];
-$price=$_POST["price"];
-$url = upload($rid,$name);
-//$url=$_FILES['url']['name'];
+if(isset($_POST['data']) && isset($_FILES['url'])){
+    $data = json_decode($_POST['data'], true);
+    $name = $data[0];
+    $category=$data[1];
+    $description=$data[2];
+    $price=$data[3];
+    $url=$_FILES['url']['name'];
 
-
-$sql = "select * from food where fid like '$fid'";
-$result = mysqli_query($conn,$sql);
+	$sql = "select * from food where fid like '$fid'";
+	$result = mysqli_query($conn,$sql);
 
 if(mysqli_num_rows($result)>0){
     $row = mysqli_fetch_row($result);
     $id = $row[1];
-$imageFileType = strtolower(pathinfo($_FILES["url"]["name"],PATHINFO_EXTENSION));
-	$url = "/r".$row[0]."/". $name.".".$imageFileType;
+	$rid=$row[0];
+	$url = upload($rid,$name);
+	if(strpos($url,'restaurant')!==false)
+{
+	
 	$stmt = $conn->prepare("UPDATE food SET name=?,ingredients=?,category=?,cost=?,url=? WHERE fid=?");
     $stmt->bind_param("sssisi",$name,$description,$category,$price,$url,$id);
     $stmt->execute();
 	
-	echo "Item Added";
+	echo "200";
+	}
+	else {
+	echo $url;
+}
+
 }
 else {
 	 echo "Item Does not Exists";
 }
+}
+else {
+	$data = json_decode($_POST['data'], true);
+    $name = $data[0];
+    $category=$data[1];
+    $description=$data[2];
+    $price=$data[3];
+    
+
+	$sql = "select * from food where fid like '$fid'";
+	$result = mysqli_query($conn,$sql);
+
+if(mysqli_num_rows($result)>0){
+    $row = mysqli_fetch_row($result);
+    $id = $row[1];
+	
+	$stmt = $conn->prepare("UPDATE food SET name=?,ingredients=?,category=?,cost=? WHERE fid=?");
+    $stmt->bind_param("sssii",$name,$description,$category,$price,$id);
+    $stmt->execute();
+	
+	echo "200";
+}
+else {
+	 echo "Item Does not Exists";
+}
+}
+
+
+
+//$url=$_FILES['url']['name'];
+
+
 
 
 ?>
